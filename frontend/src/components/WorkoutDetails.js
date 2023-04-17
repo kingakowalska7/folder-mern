@@ -1,7 +1,7 @@
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-// import { useState } from "react"
+//  import { useState } from "react"
 
 const WorkoutDetails = ({ workout }) => {
     const { dispatch } = useWorkoutsContext()
@@ -67,6 +67,65 @@ const handleClick = async () => {
 //         </>
 //       );
 //     }
+
+// const EditForm = ({workout}) =>{
+
+//     const id = workout._id;
+
+//     const [title, setTitle] = useState(workout.title);
+//     const [load, setLoad] = useState(workout.load);
+//     const [reps, setReps] = useState(workout.reps);
+    
+
+//     // const {dispatch} = useWorkoutsContext;
+
+//     const updatedWorkout = {id, title, load, reps}
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//         updateWorkout(id, updatedWorkout)
+//     }
+
+//      return (
+
+//         <Form onSubmit={handleSubmit}>
+//             <Form.Group>
+//                 <Form.Control
+//                     type="text"
+//                     placeholder="Title *"
+//                     name="title"
+//                     value={title}
+//                     onChange={(e)=> setTitle(e.target.value)}
+//                     required
+//                 />
+//             </Form.Group>
+//             <Form.Group>
+//                 <Form.Control
+//                     type="number"
+//                     placeholder="Load"
+//                     name="load"
+//                     value={load}
+//                     onChange={(e)=> setLoad(e.target.value)}
+//                     required
+//                 />
+//             </Form.Group>
+        
+//             <Form.Group>
+//                 <Form.Control
+//                     type="number"
+//                     placeholder="Reps"
+//                     name="reps"
+//                     value={reps}
+//                     onChange={(e)=> setReps(e.target.value)}
+//                 />
+//             </Form.Group>
+//             <Button variant="success" type="submit" block>
+//                 Edit
+//             </Button>
+//         </Form>
+
+//      )
+// }
 
 
 const handleSubmit = async () => {
