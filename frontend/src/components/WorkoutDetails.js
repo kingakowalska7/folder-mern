@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 //  import { useState } from "react"
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
+  const { user } = useAuthContext();
   const [isEditable, setIsEditable] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -26,10 +28,19 @@ const WorkoutDetails = ({ workout }) => {
   };
 
   const handleClick = async () => {
+
+   if (!user) {
+    return
+   }
+
     const response = await fetch(
       "http://localhost:8000/api/workouts/" + workout._id,
       {
         method: "DELETE",
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+
       }
     );
     const json = await response.json();
@@ -40,6 +51,11 @@ const WorkoutDetails = ({ workout }) => {
   };
 
   const handleSubmit = async () => {
+
+    if (!user) {
+      return
+     }
+
     const response = await fetch(
       "http://localhost:8000/api/workouts/" + workout._id,
       {
@@ -47,6 +63,7 @@ const WorkoutDetails = ({ workout }) => {
         body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
+          'Authorization': `Bearer ${user.token}`
         },
       }
     );
